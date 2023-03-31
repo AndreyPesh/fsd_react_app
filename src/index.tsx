@@ -1,6 +1,6 @@
 import React from 'react';
 import ReactDOM from 'react-dom/client';
-// import './styles/style.scss';
+import '1_app/styles/style.scss';
 // import 'react-toastify/dist/ReactToastify.css';
 import { createBrowserRouter, RouterProvider } from 'react-router-dom';
 import { routes } from './1_app/router/routes';

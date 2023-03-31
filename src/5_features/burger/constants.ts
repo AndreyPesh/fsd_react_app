@@ -1,0 +1,1 @@
+export const NAME_CLASS_ACTIVE_BURGER = 'active';

@@ -35,6 +35,13 @@ body {
   min-height: 100vh;
 }
 
+.container {
+  margin: 0 auto;
+  padding: $container-padding;
+  max-width: $content-width;
+  @include font(1.4rem, $weight: 400);
+}
+
 .title {
   font-family: "Nunito";
   color: $color-title;
@@ -69,18 +76,11 @@ body {
   display: inline-block;
   width: 24px;
   height: 24px;
-  background: url("../../assets/icons/arrow_question.svg") no-repeat center;
+  background: url("../../../assets/icons/arrow_question.svg") no-repeat center;
   cursor: pointer;
   &_active {
     transform: rotate(180deg);
   }
-}
-
-.container {
-  margin: 0 auto;
-  padding: $container-padding;
-  max-width: $content-width;
-  @include font(1.4rem, $weight: 400);
 }
 
 .cross-close {
@@ -90,7 +90,7 @@ body {
   display: inline-block;
   width: 20px;
   height: 20px;
-  background: url("../../assets/icons/cross-exit.svg") no-repeat center;
+  background: url("../../../assets/icons/cross-exit.svg") no-repeat center;
   background-size: contain;
   border-radius: 2px;
   cursor: pointer;

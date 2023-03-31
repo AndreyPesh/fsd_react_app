@@ -14,3 +14,8 @@ export const enum NavigationState {
   idle = 'idle',
   submitting = 'submitting',
 }
+
+export const enum AuthPath {
+  login = '/login',
+  sign = '/sign',
+}

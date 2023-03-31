@@ -1,0 +1,56 @@
+%auth-button {
+  padding: 10px 10px 10px 37px;
+  flex-basis: content;
+  background-repeat: no-repeat;
+  background-position-x: 10px;
+  background-position-y: 10px;
+  @include font(1.4rem, $height: 1.6rem, $weight: 400);
+  border-radius: 8px;
+  cursor: pointer;
+}
+
+.auth-buttons {
+  width: 250px;
+  display: inline-flex;
+  justify-content: space-between;
+  padding-left: 20px;
+  border-left: 2px solid $color-light;
+}
+.auth-button-login {
+  @extend %auth-button;
+  background-color: $color-white;
+  background-image: url("../../../assets/icons/login.svg");
+  color: $color-gray;
+  border: 1px solid rgba(184, 199, 214, 0.35);
+  transition: all 0.1s ease;
+  &:active {
+    transform: scale(0.9);
+  }
+}
+.auth-button-sign {
+  @extend %auth-button;
+  background-color: $color-permanent;
+  background-image: url("../../../assets/icons/sign.svg");
+  color: $color-white;
+  border: 1px solid $color-permanent;
+  transition: all 0.1s ease;
+  &:active {
+    transform: scale(0.9);
+  }
+}
+
+.user-logout-btn {
+  display: inline-block;
+  width: 64px;
+  height: 38px;
+  background: url("../../../assets/icons/logout.svg") no-repeat center;
+  border-radius: 8px;
+  transition: all 0.3s ease;
+  cursor: pointer;
+  &:hover {
+    box-shadow: 0 0 5px rgba($color: $color-dark, $alpha: 0.6);
+  }
+  &:active {
+    transform: scale(0.95);
+  }
+}
