@@ -1,14 +1,13 @@
 import { useNavigate } from 'react-router-dom';
 import { BASE_URL, DEFAULT_PHOTO_PATH } from '1_app/constants';
+import { useAppSelector } from '1_app/store/hooks';
 import { Links } from '1_app/types/enum';
-// import { useAppSelector } from '../../hooks/store';
 import LogoutButton from '7_shared/buttons/auth/LogoutButton';
 
 
 const UserManagement = (): JSX.Element => {
   const navigate = useNavigate();
-  // const { user } = useAppSelector((state) => state.userData);
-  const user = {photo: '1.jpg', name: 'And'}
+  const { user } = useAppSelector((state) => state.userData);
 
   const userPageHandler = (): void => {
     navigate(Links.user);
