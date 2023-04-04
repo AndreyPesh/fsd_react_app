@@ -1,4 +1,5 @@
-import { Links } from '1_app/types/enum';
+import { AuthPath, Links } from '1_app/types/enum';
+import Authorization from '2_processes/auth/ui/Authorization';
 // import Admin from '../pages/Admin';
 // import UpdateSmartphone from '../pages/admin/UpdateSmartphone';
 // import Authorization from '../pages/Authorization';
@@ -8,7 +9,6 @@ import Refrigerators from '3_pages/Refrigerators';
 // import Smartphone from '../pages/Smartphone';
 import Smartphones from '3_pages/Smartphones';
 // import User from '../pages/User';
-// import { AuthPath, Links } from '../types/enum';
 // import { ID_SMARTPHONE_PARAM } from '../utils/constants';
 // import { createRoutePage } from '../utils/functions';
 // import { loadData } from '../utils/loader';
@@ -48,24 +48,24 @@ export const listRoutes = [
     element: <Furniture />,
     // loader: loadData,
   },
-  // {
-  //   mainNav: false,
-  //   path: AuthPath.login,
-  //   element: (
-  //     <PublicRoute>
-  //       <Authorization />
-  //     </PublicRoute>
-  //   ),
-  // },
-  // {
-  //   mainNav: false,
-  //   path: AuthPath.sign,
-  //   element: (
-  //     <PublicRoute>
-  //       <Authorization />
-  //     </PublicRoute>
-  //   ),
-  // },
+  {
+    mainNav: false,
+    path: AuthPath.login,
+    element: (
+      // <PublicRoute>
+        <Authorization />
+      // </PublicRoute>
+    ),
+  },
+  {
+    mainNav: false,
+    path: AuthPath.sign,
+    element: (
+      // <PublicRoute>
+        <Authorization />
+      // </PublicRoute>
+    ),
+  },
   // {
   //   mainNav: false,
   //   path: Links.user,

@@ -4,6 +4,8 @@
 @import "./abstract/mixins";
 @import "./base/base";
 
+@import "../../2_processes/auth/ui/styles/auth";
+
 @import "../../4_widgets/header/header";
 
 @import "../../5_features/navigation/navigation";
@@ -13,3 +15,4 @@
 
 @import "../../7_shared/loader/loader";
 @import "../../7_shared/buttons/auth/auth_buttons";
+@import "../../7_shared/buttons/buttons";

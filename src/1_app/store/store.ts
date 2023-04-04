@@ -1,9 +1,9 @@
 import { configureStore } from '@reduxjs/toolkit';
-import userReducer from './slices/userSlice';
+import userReducer from '../../2_processes/auth/model/userSlice';
 // import { authApi } from './api/authApi';
 // import { productsApi } from './api/productsApi';
 // import { userApi } from './api/userApi';
-// import loginFormReducer from './slice/loginSlice';
+import loginFormReducer from '../../2_processes/auth/model/loginSlice';
 // import modalReducer from './slice/modalSlice';
 // import { smartphoneApi } from './api/admin/smartphoneApi';
 // import { smartphoneBrandApi } from './api/admin/smartphoneBrandApi';
@@ -11,7 +11,7 @@ import userReducer from './slices/userSlice';
 
 export const store = configureStore({
   reducer: {
-    // loginFormData: loginFormReducer,
+    loginFormData: loginFormReducer,
     userData: userReducer,
     // modal: modalReducer,
     // smartphoneDataForm: smartphoneDataSlice,
