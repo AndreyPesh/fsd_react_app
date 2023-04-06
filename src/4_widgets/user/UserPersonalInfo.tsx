@@ -2,13 +2,13 @@ import { ChangeEvent, FormEvent, useEffect, useState } from 'react';
 import SelectRole from './ui/SelectRole';
 import LoadPhoto from './ui/LoadPhoto';
 import { useAppSelector } from '1_app/store/hooks';
-// import useToastyForAuth from '../hooks/useToastyForAuth';
-import { initUserData } from './utils/constants';
-import { addUserDataToForm } from './utils/helpers';
 import { useUpdateUserMutation } from '7_shared/api/userApi';
-import { UserUpdateData } from './utils/interfaces';
 import { ErrorResponse } from '7_shared/api/types/types';
+import useToastyForAuth from '7_shared/toasty/hooks/useToastyForAuth';
+import { addUserDataToForm } from './utils/helpers';
+import { UserUpdateData } from './utils/interfaces';
 import { UserMessage } from './utils/enums';
+import { initUserData } from './utils/constants';
 
 const UserPersonalInfo = (): JSX.Element => {
   const { user } = useAppSelector((state) => state.userData);
@@ -17,13 +17,13 @@ const UserPersonalInfo = (): JSX.Element => {
 
   const messageError = error != null ? (error as ErrorResponse).data.message : UserMessage.wrong;
 
-  // const isErrorRequest = useToastyForAuth({
-  //   isSuccess,
-  //   isError,
-  //   messageSuccess: AuthMessage.userUpdated,
-  //   messageError,
-  //   redirectToMain: false,
-  // });
+  const isErrorRequest = useToastyForAuth({
+    isSuccess,
+    isError,
+    messageSuccess: UserMessage.userDataUpdated,
+    messageError,
+    redirectToMain: false,
+  });
 
   const userDataHandler = async (event: FormEvent<HTMLFormElement>) => {
     event.preventDefault();
@@ -67,9 +67,9 @@ const UserPersonalInfo = (): JSX.Element => {
           Save data
         </button>
       </form>
-      {/* {isErrorRequest && (
+      {isErrorRequest && (
         <p className="auth__error auth__error_response">{error != null ? messageError : null}</p>
-      )} */}
+      )}
     </div>
   );
 };

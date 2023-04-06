@@ -1,14 +1,14 @@
 import { Formik, FormikProps } from 'formik';
 import { useAppSelector } from '1_app/store/hooks';
-import { validateLoginForm } from '../utils/validateForm';
-// import useToastyForAuth from '../hooks/useToastyForAuth';
-import { NAME_STORAGE_LOGIN_FORM_DATA } from '../utils/storage/constants';
-import PersistLoginForm from '../utils/persist/PersistLoginForm';
 import { ErrorResponse } from '7_shared/api/types/types';
 import { useLoginUserMutation } from '7_shared/api/authApi';
-import { AuthMessage } from '../utils/enums';
 import LoadButton from '7_shared/buttons/LoadButton';
 import { LoginFormValues } from '7_shared/api/types/interfaces';
+import useToastyForAuth from '7_shared/toasty/hooks/useToastyForAuth';
+import { NAME_STORAGE_LOGIN_FORM_DATA } from '../utils/storage/constants';
+import PersistLoginForm from '../utils/persist/PersistLoginForm';
+import { AuthMessage } from '../utils/enums';
+import { validateLoginForm } from '../utils/validateForm';
 
 const Login = (): JSX.Element => {
   const currentFormData = useAppSelector((state) => state.loginFormData);
@@ -17,12 +17,12 @@ const Login = (): JSX.Element => {
 
   const messageError = error != null ? (error as ErrorResponse).data.message : AuthMessage.wrong;
 
-  // const isErrorRequest = useToastyForAuth({
-  //   isSuccess,
-  //   isError,
-  //   messageSuccess: AuthMessage.userLogin,
-  //   messageError,
-  // });
+  const isErrorRequest = useToastyForAuth({
+    isSuccess,
+    isError,
+    messageSuccess: AuthMessage.userLogin,
+    messageError,
+  });
 
   return (
     <Formik
@@ -66,11 +66,11 @@ const Login = (): JSX.Element => {
             ) : null}
           </div>
 
-          {/* {isErrorRequest && (
+          {isErrorRequest && (
             <p className="auth__error auth__error_response">
               {error != null ? messageError : null}
             </p>
-          )} */}
+          )}
 
           <LoadButton type="submit" listClass="button auth-button" isLoad={isLoading}>
             Login

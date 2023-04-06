@@ -1,8 +1,8 @@
 import { ChangeEvent, SetStateAction, useEffect, useState } from 'react';
-import { UserUpdateData } from '../utils/interfaces';
-import { ListRole } from '../utils/enums';
 import Modal from '5_features/modal/Modal';
 import PasswordRole from './PasswordRole';
+import { UserUpdateData } from '../utils/interfaces';
+import { ListRole } from '../utils/enums';
 
 interface SelectRoleProps {
   currentRole: string;

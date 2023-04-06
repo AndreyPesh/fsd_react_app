@@ -1,10 +1,10 @@
 import { useFormik } from 'formik';
-// import useToastyForAuth from '../hooks/useToastyForAuth';
 import { useRegisterUserMutation } from '7_shared/api/authApi';
 import { ErrorResponse } from '7_shared/api/types/types';
-import { AuthMessage } from '../utils/enums';
 import LoadButton from '7_shared/buttons/LoadButton';
 import { SignFormValues } from '7_shared/api/types/interfaces';
+import useToastyForAuth from '7_shared/toasty/hooks/useToastyForAuth';
+import { AuthMessage } from '../utils/enums';
 import { initValuesSignForm } from '../utils/constants';
 import { validateSignForm } from '../utils/validateForm';
 
@@ -13,12 +13,12 @@ const Sign = (): JSX.Element => {
 
   const messageError = error != null ? (error as ErrorResponse).data.message : AuthMessage.wrong;
 
-  // const isErrorRequest = useToastyForAuth({
-  //   isSuccess,
-  //   isError,
-  //   messageSuccess: AuthMessage.userRegistered,
-  //   messageError,
-  // });
+  const isErrorRequest = useToastyForAuth({
+    isSuccess,
+    isError,
+    messageSuccess: AuthMessage.userRegistered,
+    messageError,
+  });
 
   const formik = useFormik<SignFormValues>({
     initialValues: initValuesSignForm,
@@ -94,9 +94,9 @@ const Sign = (): JSX.Element => {
         ) : null}
       </div>
 
-      {/* {isErrorRequest && (
+      {isErrorRequest && (
         <p className="auth__error auth__error_response">{error != null ? messageError : null}</p>
-      )} */}
+      )}
 
       <LoadButton type="submit" listClass="button auth-button" isLoad={isLoading}>
         Sign

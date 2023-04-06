@@ -1,5 +1,5 @@
 import { ChangeEvent, MouseEvent, SetStateAction, useRef, useState } from 'react';
-// import { toast } from 'react-toastify';
+import { toast } from 'react-toastify';
 import RemovePhoto from './RemovePhoto';
 import { UserUpdateData } from '../utils/interfaces';
 import { LoadPhotoErrors } from '../utils/enums';
@@ -23,7 +23,7 @@ const LoadPhoto = ({ setPhotoUser }: LoadPhotoProps) => {
       const image = files[0];
       const isValidExt = isValidExtention(image.name);
       if (isValidExt === false) {
-        // toast.error(LoadPhotoErrors.INVALID_EXT);
+        toast.error(LoadPhotoErrors.INVALID_EXT);
         return;
       }
       loadFile(image);
@@ -45,7 +45,7 @@ const LoadPhoto = ({ setPhotoUser }: LoadPhotoProps) => {
       }
     };
     reader.onerror = () => {
-      // toast.error(LoadPhotoErrors.CANT_LOAD);
+      toast.error(LoadPhotoErrors.CANT_LOAD);
     };
     reader.readAsDataURL(file);
   };

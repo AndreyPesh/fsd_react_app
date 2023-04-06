@@ -1,15 +1,14 @@
 import { useEffect } from 'react';
+import { toast } from 'react-toastify';
 import { useRemovePhotoMutation } from '7_shared/api/userApi';
 import { LoadPhotoErrors } from '../utils/enums';
-// import { toast } from 'react-toastify';
-// import { useRemovePhotoMutation } from '../../../store/api/userApi';
 
 const RemovePhoto = () => {
   const [removePhoto, { isError }] = useRemovePhotoMutation();
 
   useEffect(() => {
     if (isError) {
-      // toast.error(LoadPhotoErrors.CANT_REMOVE);
+      toast.error(LoadPhotoErrors.CANT_REMOVE);
     }
   }, [isError]);
 

@@ -1,6 +1,5 @@
 import { SetStateAction, useRef } from 'react';
 import { UserUpdateData } from '../utils/interfaces';
-// import { UserUpdateData } from '../../../store/api/types';
 
 interface PasswordRoleProps {
   setUserPasswordRole: (data: SetStateAction<UserUpdateData>) => void;

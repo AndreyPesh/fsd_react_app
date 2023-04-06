@@ -1,5 +1,6 @@
 export const enum UserMessage {
-  wrong = 'Something went wrong'
+  wrong = 'Something went wrong',
+  userDataUpdated = 'User data updated'
 }
 
 export const enum LoadPhotoErrors {
