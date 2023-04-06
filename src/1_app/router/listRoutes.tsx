@@ -2,19 +2,17 @@ import PublicRoute from './PublicRoute';
 import ProtectedRoute from './ProtectedRoute';
 import { AuthPath, Links } from '1_app/types/enum';
 import Authorization from '2_processes/auth/ui/Authorization';
-// import Admin from '../pages/Admin';
 // import UpdateSmartphone from '../pages/admin/UpdateSmartphone';
-// import Authorization from '../pages/Authorization';
 import Computers from '3_pages/Computers';
 import Furniture from '3_pages/Furniture';
 import Refrigerators from '3_pages/Refrigerators';
 // import Smartphone from '../pages/Smartphone';
 import Smartphones from '3_pages/Smartphones';
 import UserAccount from '3_pages/UserAccount';
+import Admin from '3_pages/admin/Admin';
 // import { ID_SMARTPHONE_PARAM } from '../utils/constants';
 // import { createRoutePage } from '../utils/functions';
 // import { loadData } from '../utils/loader';
-// import ProtectedRoute from './protectedRoute';
 
 export const listRoutes = [
   {
@@ -76,16 +74,16 @@ export const listRoutes = [
       </ProtectedRoute>
     ),
   },
-  // {
-  //   mainNav: true,
-  //   name: 'Admin',
-  //   path: Links.admin,
-  //   element: (
-  //     <ProtectedRoute>
-  //       <Admin />
-  //     </ProtectedRoute>
-  //   ),
-  // },
+  {
+    mainNav: true,
+    name: 'Admin',
+    path: Links.admin,
+    element: (
+      <ProtectedRoute>
+        <Admin />
+      </ProtectedRoute>
+    ),
+  },
   // {
   //   mainNav: false,
   //   path: createRoutePage(Links.admin + Links.smartphone, ID_SMARTPHONE_PARAM),
