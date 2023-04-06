@@ -1,9 +1,9 @@
 import { Outlet, useNavigation } from 'react-router-dom';
+import { ToastContainer } from 'react-toastify';
 import Header from '4_widgets/header/Header';
 import Loader from '7_shared/loader/Loader';
 import { NavigationState } from './types/enum';
-// import { ToastContainer } from 'react-toastify';
-// import { DELAY_TIME_TOAST } from './utils/constants';
+import { DELAY_TIME_TOAST } from './constants';
 
 const App = (): JSX.Element => {
   const navigation = useNavigation();
@@ -12,7 +12,7 @@ const App = (): JSX.Element => {
     <>
       <Header />
       {isLoading ? <Loader /> : <Outlet />}
-      {/* <ToastContainer autoClose={DELAY_TIME_TOAST} /> */}
+      <ToastContainer autoClose={DELAY_TIME_TOAST} />
     </>
   );
 };

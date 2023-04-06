@@ -1,0 +1,121 @@
+%before-input {
+  content: '';
+  position: absolute;
+  display: inline-block;
+  top: 46px;
+  left: 10px;
+  height: 24px;
+  width: 29px;
+  background-color: $color-milk;
+  border-right: 2px solid $color-light;
+}
+
+.auth {
+  min-height: calc(100vh - 290px);
+  display: flex;
+  justify-content: center;
+}
+
+.auth__forms {
+  min-width: 350px;
+  background: $color-white;
+  margin-top: 30%;
+}
+
+.auth__header {
+  display: inline-flex;
+  width: 100%;
+}
+
+.auth__login-form {
+  padding: 25px;
+}
+
+.auth__field-form {
+  position: relative;
+  padding-bottom: 20px;
+  display: flex;
+  flex-wrap: wrap;
+  flex-direction: column;
+  width: 100%;
+  @include font(1.4rem, $height: 1.8rem, $weight: 500);
+  & > * {
+    color: $color-title;
+  }  
+  &_login {
+    :before {
+      @extend %before-input;
+      background-image: url("../../../../assets/icons/person.svg");
+    }
+  }
+  &_password {
+    :before {
+      @extend %before-input;
+      background-image: url("../../../../assets/icons/lock_open.svg");
+    }
+  }
+}
+
+.auth__input {
+  margin-top: 15px;
+  padding: 15px 15px 15px 53px;
+  background-color: $color-milk;
+  background-position: 15px center;
+  background-repeat: no-repeat;
+  color: $color-gray;
+  outline: none;
+  border: none;
+  &:focus {
+    box-shadow: 0px 0px 2px $color-gray;
+  }
+  &_text {
+    padding-left: 15px;
+  }
+}
+
+.auth__error {
+  margin: 0;
+  padding: 5px;
+  color: $color-error;
+  &_response {
+    padding: 10px;
+    font-size: 1.4rem;
+    text-align: center;
+  }
+}
+
+.button-auth {
+  padding: 15px 25px 15px 59px;
+  width: 50%;
+  font-family: "Nunito", Verdana, sans-serif;
+  @include font(1.8rem, $weight: 600);
+  text-transform: uppercase;
+  color: rgba(32, 56, 80, 0.65);
+  background-color: $color-milk;
+  background-repeat: no-repeat;
+  background-position: 10px center;
+  border: none;
+  cursor: pointer;
+  &_login {
+    background-image: url("../../../../assets/icons/login-form-gray.svg");
+    border-bottom: 1px solid $color-light;
+    border-right: 1px solid $color-light;
+    &.active {
+      background-image: url("../../../../assets/icons/login-form.svg");
+      border: none;
+    }
+  }
+  &_sign {
+    background-image: url("../../../../assets/icons/sign-form-gray.svg");
+    border-bottom: 1px solid $color-light;
+    border-left: 1px solid $color-light;
+    &.active {
+      background-image: url("../../../../assets/icons/sign-form.svg");
+      border: none;
+    }
+  }
+  &.active {
+    background-color: $color-white;
+    color: $color-title;
+  }
+}

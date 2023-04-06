@@ -1,0 +1,91 @@
+.button {
+  padding: 20px 24px 20px 57px;
+  color: $color-white;
+  @include font(1.4rem, $weight: 500);
+  background-color: $color-permanent;
+  background-repeat: no-repeat;
+  background-position-x: 24px;
+  background-position-y: center;
+  border-radius: 8px;
+  border: none;
+  cursor: pointer;
+  transition: all 0.1s ease-in;
+  &:active {
+    transform: scale(0.9);
+  }
+  &_school {
+    background-image: url("../../assets/icons/school.svg");
+  }
+  &_basket {
+    background-image: url("../../assets/icons/basket.svg");
+  }
+  &_call {
+    padding: 16px 49px 16px 24px;
+    background-image: url("../../assets/icons/enter.svg");
+    background-position-x: 154px;
+  }
+  &_ok {
+    padding: 16px 49px 16px 24px;
+    background-image: url("../../assets/icons/ok.svg");
+    background-position-x: 100px;
+  }
+  &_back {
+    background-color: $color-white;
+    color: rgba(32, 56, 80, 0.65);
+    background-image: url("../../assets/icons/back.svg");
+  }
+  &_user {
+    padding: 10px;
+    background-color: $color-swamp;
+    &:disabled {
+      pointer-events: none;
+      user-select: none;
+      background-color: rgba($color: $color-swamp, $alpha: 0.5);
+    }
+  }
+  &_user-load {
+    background-color: $color-dark;
+  }
+  &_user-remove {
+    background-color: $color-alert;
+  }
+  &_cart {
+    padding: 16px 49px 16px 24px;
+    background-image: url("../../assets/icons/cart.svg");
+    background-position-x: 100px;
+  }
+  &_confirm {
+    padding: 10px;
+    min-width: 120px;
+    background-color: $color-swamp;
+  }
+  &_submit {
+    padding: 10px;
+    min-width: 120px;
+  }
+  &_cancel {
+    padding: 10px;
+    min-width: 120px;
+    background-color: $color-alert;
+  }
+  &_remove {
+    padding: 10px;
+    min-width: 120px;
+    background-color: $color-cherry;
+    &:disabled {
+      pointer-events: none;
+      user-select: none;
+      background-color: rgba($color: $color-title, $alpha: 0.5);
+    }
+  }
+}
+
+.auth-button {
+  padding: 16px 24px;
+  width: 100%;
+  &:disabled {
+    pointer-events: none;
+    user-select: none;
+    background-color: rgba($color: $color-permanent, $alpha: 0.5);
+  }
+}
