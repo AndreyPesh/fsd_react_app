@@ -1,3 +1,5 @@
+import PublicRoute from './PublicRoute';
+import ProtectedRoute from './ProtectedRoute';
 import { AuthPath, Links } from '1_app/types/enum';
 import Authorization from '2_processes/auth/ui/Authorization';
 // import Admin from '../pages/Admin';
@@ -8,12 +10,11 @@ import Furniture from '3_pages/Furniture';
 import Refrigerators from '3_pages/Refrigerators';
 // import Smartphone from '../pages/Smartphone';
 import Smartphones from '3_pages/Smartphones';
-// import User from '../pages/User';
+import UserAccount from '3_pages/UserAccount';
 // import { ID_SMARTPHONE_PARAM } from '../utils/constants';
 // import { createRoutePage } from '../utils/functions';
 // import { loadData } from '../utils/loader';
 // import ProtectedRoute from './protectedRoute';
-// import PublicRoute from './publicRoute';
 
 export const listRoutes = [
   {
@@ -52,29 +53,29 @@ export const listRoutes = [
     mainNav: false,
     path: AuthPath.login,
     element: (
-      // <PublicRoute>
+      <PublicRoute>
         <Authorization />
-      // </PublicRoute>
+      </PublicRoute>
     ),
   },
   {
     mainNav: false,
     path: AuthPath.sign,
     element: (
-      // <PublicRoute>
+      <PublicRoute>
         <Authorization />
-      // </PublicRoute>
+      </PublicRoute>
     ),
   },
-  // {
-  //   mainNav: false,
-  //   path: Links.user,
-  //   element: (
-  //     <ProtectedRoute>
-  //       <User />
-  //     </ProtectedRoute>
-  //   ),
-  // },
+  {
+    mainNav: false,
+    path: Links.user,
+    element: (
+      <ProtectedRoute>
+        <UserAccount />
+      </ProtectedRoute>
+    ),
+  },
   // {
   //   mainNav: true,
   //   name: 'Admin',
