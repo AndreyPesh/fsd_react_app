@@ -7,3 +7,8 @@ export const enum LoadPhotoErrors {
   CANT_LOAD = 'Cant load image',
   CANT_REMOVE = 'Cant remove image'
 }
+
+export const enum ListRole {
+  user = 'user',
+  admin = 'admin',
+}

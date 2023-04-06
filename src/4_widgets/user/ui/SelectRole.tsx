@@ -1,9 +1,8 @@
 import { ChangeEvent, SetStateAction, useEffect, useState } from 'react';
 import { UserUpdateData } from '../utils/interfaces';
-// import { UserUpdateData } from '../../../store/api/types';
-// import { ListRole } from '../../../types/enum';
-// import Modal from '../Modal';
-// import PasswordRole from './PasswordRole';
+import { ListRole } from '../utils/enums';
+import Modal from '5_features/modal/Modal';
+import PasswordRole from './PasswordRole';
 
 interface SelectRoleProps {
   currentRole: string;
@@ -16,12 +15,12 @@ const SelectRole = ({ currentRole, setUserRole }: SelectRoleProps) => {
   const [role, setRole] = useState<string>(currentRole);
 
   const roleHandler = (event: ChangeEvent<HTMLSelectElement>) => {
-    // const { name, value } = event.target;
-    // setRole(value);
-    // setUserRole((prevData) => ({ ...prevData, [name]: value }));
-    // if (value === ListRole.admin) {
-    //   setIsShow(true);
-    // }
+    const { name, value } = event.target;
+    setRole(value);
+    setUserRole((prevData) => ({ ...prevData, [name]: value }));
+    if (value === ListRole.admin) {
+      setIsShow(true);
+    }
   };
 
   useEffect(() => {
@@ -30,7 +29,7 @@ const SelectRole = ({ currentRole, setUserRole }: SelectRoleProps) => {
 
   return (
     <>
-      {/* <div className="user-data-form__field">
+      <div className="user-data-form__field">
         <label>Role:</label>
         <select name="role" className="user-data-form__select" value={role} onChange={roleHandler}>
           <option>{ListRole.admin}</option>
@@ -39,7 +38,7 @@ const SelectRole = ({ currentRole, setUserRole }: SelectRoleProps) => {
       </div>
       <Modal setIsShow={setIsShow} isShow={isShow}>
         <PasswordRole setUserPasswordRole={setUserRole} />
-      </Modal> */}
+      </Modal>
     </>
   );
 };
