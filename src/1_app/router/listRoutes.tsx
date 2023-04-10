@@ -2,16 +2,16 @@ import PublicRoute from './PublicRoute';
 import ProtectedRoute from './ProtectedRoute';
 import { AuthPath, Links } from '1_app/types/enum';
 import Authorization from '2_processes/auth/ui/Authorization';
-// import UpdateSmartphone from '../pages/admin/UpdateSmartphone';
 import Computers from '3_pages/Computers';
 import Furniture from '3_pages/Furniture';
 import Refrigerators from '3_pages/Refrigerators';
-// import Smartphone from '../pages/Smartphone';
 import Smartphones from '3_pages/Smartphones';
 import UserAccount from '3_pages/UserAccount';
 import Admin from '3_pages/admin/Admin';
-// import { ID_SMARTPHONE_PARAM } from '../utils/constants';
-// import { createRoutePage } from '../utils/functions';
+import { createRoutePage } from '7_shared/utils/helpers';
+import { ID_SMARTPHONE_PARAM } from '1_app/constants';
+import Smartphone from '3_pages/products/Smartphone';
+import UpdateSmartphone from '3_pages/admin/products/UpdateSmartphone';
 // import { loadData } from '../utils/loader';
 
 export const listRoutes = [
@@ -21,11 +21,11 @@ export const listRoutes = [
     name: 'Smartphone',
     element: <Smartphones />,
   },
-  // {
-  //   mainNav: false,
-  //   path: createRoutePage(Links.smartphones, ID_SMARTPHONE_PARAM),
-  //   element: <Smartphone />,
-  // },
+  {
+    mainNav: false,
+    path: createRoutePage(Links.smartphones, ID_SMARTPHONE_PARAM),
+    element: <Smartphone />,
+  },
   {
     mainNav: true,
     path: Links.computers,
@@ -84,13 +84,13 @@ export const listRoutes = [
       </ProtectedRoute>
     ),
   },
-  // {
-  //   mainNav: false,
-  //   path: createRoutePage(Links.admin + Links.smartphone, ID_SMARTPHONE_PARAM),
-  //   element: (
-  //     <ProtectedRoute>
-  //       <UpdateSmartphone />
-  //     </ProtectedRoute>
-  //   ),
-  // },
+  {
+    mainNav: false,
+    path: createRoutePage(Links.admin + Links.smartphone, ID_SMARTPHONE_PARAM),
+    element: (
+      <ProtectedRoute>
+        <UpdateSmartphone />
+      </ProtectedRoute>
+    ),
+  },
 ];

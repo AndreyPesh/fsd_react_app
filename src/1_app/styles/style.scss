@@ -6,18 +6,28 @@
 
 @import "../../2_processes/auth/ui/styles/auth";
 
+@import "../../3_pages/styles/products/products";
+
 @import "../../4_widgets/header/header";
 @import "../../4_widgets/user/styles/user_personal_info";
 @import "../../4_widgets/user/styles/load_photo";
 @import "../../4_widgets/user/styles/password_role";
+@import "../../4_widgets/admin/products/products";
 
 @import "../../5_features/navigation/navigation";
 @import "../../5_features/search/search";
 @import "../../5_features/userManagement/user_management";
 @import "../../5_features/burger/burger";
 @import "../../5_features/modal/styles/modal";
-@import "../../5_features/admin/products/styles/products";
+@import "../../5_features/admin/products/styles/products_list";
+@import "../../5_features/admin/products/tabs/smartphone/forms/form";
+@import "../../5_features/slider/styles/slider";
+@import "../../5_features/loadImages/styles/load_images";
+
+@import "../../6_entities/products/styles/product_cart";
+@import "../../6_entities/admin/smartphone/smartphone_preview";
 
 @import "../../7_shared/loader/loader";
 @import "../../7_shared/buttons/auth/auth_buttons";
 @import "../../7_shared/buttons/buttons";
+@import "../../7_shared/checkbox/styles/checkbox";

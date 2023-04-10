@@ -1,4 +1,4 @@
-import AdminProducts from '5_features/admin/products/AdminProducts';
+import AdminProducts from '4_widgets/admin/products/AdminProducts';
 
 const AdminPanel = () => {
   return <AdminProducts />;
