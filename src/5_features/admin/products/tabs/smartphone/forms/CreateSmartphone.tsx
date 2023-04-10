@@ -3,12 +3,11 @@ import { addDataSmartphone } from '../store/smartphoneDataSlice';
 import { useAppDispatch, useAppSelector } from '1_app/store/hooks';
 import { useToasty } from '7_shared/toasty/hooks/useToasty';
 import { useAddSmartphoneMutation } from '7_shared/api/smartphoneApi';
+import BrandList from '../components/BrandList';
 // import {
-//   resetDataSmartphone,
 // } from '../../../store/slice/adminData/smartphoneDataSlice';
 // import { addDataToDataForm } from '../../../utils/admin/helper';
 // import LoadImages from '../images/LoadImages';
-// import BrandList from './additional/BrandList';
 
 const CreateSmartphone = () => {
   const dataSmartphone = useAppSelector((state) => state.smartphoneDataForm);
@@ -63,7 +62,7 @@ const CreateSmartphone = () => {
             onChange={formHandler}
           />
         </div>
-        {/* <BrandList /> */}
+        <BrandList />
         <div className="form__field">
           <label>Price:</label>
           <input
