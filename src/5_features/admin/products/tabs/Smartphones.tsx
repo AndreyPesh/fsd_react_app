@@ -1,4 +1,4 @@
-import SmartphoneList from './productList/SmartphoneList';
+import SmartphoneList from './smartphone/SmartphoneList';
 
 const Smartphones = () => {
   return (
