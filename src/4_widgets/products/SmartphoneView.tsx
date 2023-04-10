@@ -1,7 +1,6 @@
-// import { createUrlImage } from '../../../utils/functions';
-// import Slider from '../../slider/Slider';
-
-import { SmartphoneData } from "7_shared/api/types/products/interfaces";
+import Slider from '5_features/slider/Slider';
+import { SmartphoneData } from '7_shared/api/types/products/interfaces';
+import { createUrlImage } from '7_shared/utils/helpers';
 
 interface SmartphoneViewProps {
   data: SmartphoneData;
@@ -13,7 +12,9 @@ const SmartphoneView = ({ data }: SmartphoneViewProps) => {
     display,
     images,
   } = data;
-  // const listImages = images.map((image) => ({urlImage: createUrlImage(image.name)}));
+  const listImages = images.map((image) => ({
+    urlImage: createUrlImage(image.name),
+  }));
   return (
     <div>
       <h2>{brand}</h2>
@@ -21,7 +22,7 @@ const SmartphoneView = ({ data }: SmartphoneViewProps) => {
         <li>Display: {display}</li>
         <li>Price: {price}</li>
       </ul>
-      {/* <Slider listImage={listImages} /> */}
+      <Slider listImage={listImages} />
     </div>
   );
 };

@@ -1,5 +1,5 @@
 import { useParams } from 'react-router-dom';
-import SmartphoneView from '6_entities/products/smartphone/SmartphoneView';
+import SmartphoneView from '4_widgets/products/SmartphoneView';
 import Loader from '7_shared/loader/Loader';
 import { useGetSmartphoneQuery } from '7_shared/api/smartphoneApi';
 
