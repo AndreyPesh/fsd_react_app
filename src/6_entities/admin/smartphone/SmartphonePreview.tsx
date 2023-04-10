@@ -3,7 +3,7 @@ import { filterProductsByStatus } from '../utils/helpers';
 import { CheckboxHandlerParams } from '../types/interfaces';
 import { SmartphoneData } from '7_shared/api/types/products/interfaces';
 import UpdateButton from '5_features/admin/products/tabs/smartphone/components/UpdateButton';
-// import Checkbox from '../../ui/Checkbox';
+import Checkbox from '7_shared/checkbox/Checkbox';
 
 interface SmartphonePreviewAdminProps {
   data: SmartphoneData;
@@ -22,7 +22,7 @@ const SmartphonePreviewAdmin = ({ data, setSelectedProducts }: SmartphonePreview
       {data.brand && data.brand.brand ? data.brand.brand + ' ' + data.model : 'Unknown'}
       <div className="list-product-admin__actions">
         <UpdateButton id={data.id}/>
-        {/* <Checkbox checkboxHandler={toggleProductToRemove} /> */}
+        <Checkbox checkboxHandler={toggleProductToRemove} />
       </div>
     </div>
   );
