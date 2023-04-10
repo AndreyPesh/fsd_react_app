@@ -4,8 +4,8 @@ import userReducer from '../../2_processes/auth/model/userSlice';
 import loginFormReducer from '../../2_processes/auth/model/loginSlice';
 import { authApi } from '7_shared/api/authApi';
 import { userApi } from '7_shared/api/userApi';
+import { smartphoneApi } from '7_shared/api/smartphoneApi';
 // import modalReducer from './slice/modalSlice';
-// import { smartphoneApi } from './api/admin/smartphoneApi';
 // import { smartphoneBrandApi } from './api/admin/smartphoneBrandApi';
 // import smartphoneDataSlice from './slice/adminData/smartphoneDataSlice';
 
@@ -18,7 +18,7 @@ export const store = configureStore({
     [authApi.reducerPath]: authApi.reducer,
     [userApi.reducerPath]: userApi.reducer,
     // [productsApi.reducerPath]: productsApi.reducer,
-    // [smartphoneApi.reducerPath]: smartphoneApi.reducer,
+    [smartphoneApi.reducerPath]: smartphoneApi.reducer,
     // [smartphoneBrandApi.reducerPath]: smartphoneBrandApi.reducer,
   },
   middleware: (getDefaultMiddleware) =>
@@ -26,7 +26,7 @@ export const store = configureStore({
       authApi.middleware,
       userApi.middleware,
       // productsApi.middleware,
-      // smartphoneApi.middleware,
+      smartphoneApi.middleware,
       // smartphoneBrandApi.middleware,
     ]),
 });

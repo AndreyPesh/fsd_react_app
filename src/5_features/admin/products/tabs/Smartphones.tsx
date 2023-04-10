@@ -1,10 +1,10 @@
-// import SmartphonesListAdmin from './SmartphonesListAdmin';
+import SmartphoneList from './productList/SmartphoneList';
 
 const Smartphones = () => {
   return (
     <div className="border green products__item">
-      <h2 className=''>Smartphones</h2>
-      {/* <SmartphonesListAdmin /> */}
+      <h2 className="">Smartphones</h2>
+      <SmartphoneList />
     </div>
   );
 };
