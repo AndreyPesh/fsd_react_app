@@ -5,3 +5,5 @@ export const DEFAULT_IMAGE_NAME = './product.svg';
 export const NAME_COOKIE_LOGGED = 'logged_in';
 
 export const DELAY_TIME_TOAST = 300;
+
+export const ID_SMARTPHONE_PARAM = ':smartphoneId';
