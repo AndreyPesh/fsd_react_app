@@ -1,11 +1,11 @@
 import { ChangeEvent, FormEvent, useState } from 'react';
-import { addDataSmartphone } from '../store/smartphoneDataSlice';
+import { addDataSmartphone, resetDataSmartphone } from '../store/smartphoneDataSlice';
 import { useAppDispatch, useAppSelector } from '1_app/store/hooks';
 import { useToasty } from '7_shared/toasty/hooks/useToasty';
 import { useAddSmartphoneMutation } from '7_shared/api/smartphoneApi';
 import BrandList from '../components/BrandList';
 import LoadImages from '5_features/loadImages/LoadImages';
-// import { addDataToDataForm } from '../../../utils/admin/helper';
+import { addDataToDataForm } from '../utils/helpers';
 
 const CreateSmartphone = () => {
   const dataSmartphone = useAppSelector((state) => state.smartphoneDataForm);
@@ -27,13 +27,13 @@ const CreateSmartphone = () => {
 
   const formSubmit = async (event: FormEvent<HTMLFormElement>) => {
     event.preventDefault();
-    // const unitedDataSmartphone = { ...dataSmartphone, images };
-    // const form = addDataToDataForm(unitedDataSmartphone);
+    const unitedDataSmartphone = { ...dataSmartphone, images };
+    const form = addDataToDataForm(unitedDataSmartphone);
 
-    // await addSmartphone(form);
+    await addSmartphone(form);
 
-    // dispatch(resetDataSmartphone());
-    // setImages([]);
+    dispatch(resetDataSmartphone());
+    setImages([]);
   };
 
   return (
