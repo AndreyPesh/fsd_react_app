@@ -6,6 +6,8 @@
 
 @import "../../2_processes/auth/ui/styles/auth";
 
+@import "../../3_pages/styles/products/products";
+
 @import "../../4_widgets/header/header";
 @import "../../4_widgets/user/styles/user_personal_info";
 @import "../../4_widgets/user/styles/load_photo";
@@ -18,8 +20,9 @@
 @import "../../5_features/burger/burger";
 @import "../../5_features/modal/styles/modal";
 @import "../../5_features/admin/products/styles/products_list";
-@import "../../5_features/admin/forms/form";
+@import "../../5_features/admin/products/tabs/smartphone/forms/form";
 
+@import "../../6_entities/products/styles/product_cart";
 @import "../../6_entities/admin/smartphone/smartphone_preview";
 
 @import "../../7_shared/loader/loader";
