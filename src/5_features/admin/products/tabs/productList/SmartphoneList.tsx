@@ -1,4 +1,6 @@
 import { useEffect, useState } from 'react';
+import Modal from '5_features/modal/Modal';
+import BrandSmartphone from '5_features/admin/forms/BrandSmartphone';
 import SmartphonePreview from '6_entities/admin/smartphone/SmartphonePreview';
 import { useDeleteSmartphonesMutation, useGetSmartphoneListQuery } from '7_shared/api/smartphoneApi';
 
@@ -61,10 +63,10 @@ const SmartphoneList = () => {
       /> */}
       {/* <Modal setIsShow={setIsShowForm} isShow={isShowForm}>
         <FormSmartphone />
-      </Modal>
-      <Modal setIsShow={setIsShowFormBrand} isShow={isShowFormBrand}>
-        <FormBrand />
       </Modal> */}
+      <Modal setIsShow={setIsShowFormBrand} isShow={isShowFormBrand}>
+        <BrandSmartphone />
+      </Modal>
     </div>
   );
 };

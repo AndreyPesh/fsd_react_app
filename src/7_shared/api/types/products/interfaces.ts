@@ -21,3 +21,8 @@ export interface ImageData {
   id: string;
   name: string;
 }
+
+export interface BrandData {
+  id: string;
+  brand: string;
+}

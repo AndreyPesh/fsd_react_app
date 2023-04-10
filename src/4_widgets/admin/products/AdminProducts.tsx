@@ -1,5 +1,5 @@
 import { useState } from 'react';
-import { listProducts } from './utils/listProduct';
+import { listProducts } from '../../../5_features/admin/products/utils/listProduct';
 
 const AdminProducts = () => {
     const [translate, setTranslate] = useState(0);
