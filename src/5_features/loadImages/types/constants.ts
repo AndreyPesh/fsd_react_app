@@ -1,0 +1,1 @@
+export const DELETE_COUNT_IMAGES = 1;

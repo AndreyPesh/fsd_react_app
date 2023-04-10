@@ -4,10 +4,8 @@ import { useAppDispatch, useAppSelector } from '1_app/store/hooks';
 import { useToasty } from '7_shared/toasty/hooks/useToasty';
 import { useAddSmartphoneMutation } from '7_shared/api/smartphoneApi';
 import BrandList from '../components/BrandList';
-// import {
-// } from '../../../store/slice/adminData/smartphoneDataSlice';
+import LoadImages from '5_features/loadImages/LoadImages';
 // import { addDataToDataForm } from '../../../utils/admin/helper';
-// import LoadImages from '../images/LoadImages';
 
 const CreateSmartphone = () => {
   const dataSmartphone = useAppSelector((state) => state.smartphoneDataForm);
@@ -123,7 +121,7 @@ const CreateSmartphone = () => {
             onChange={formHandler}
           />
         </div>
-        {/* <LoadImages setImagesToState={setImages} images={images} /> */}
+        <LoadImages setImagesToState={setImages} images={images} />
         <div className="form__button-submit">
           <button className="button button_submit " type="submit">
             Save
