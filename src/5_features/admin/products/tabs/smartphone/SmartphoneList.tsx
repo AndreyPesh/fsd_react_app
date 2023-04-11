@@ -4,6 +4,7 @@ import BrandSmartphone from '5_features/admin/products/tabs/smartphone/forms/Bra
 import SmartphonePreview from '6_entities/admin/smartphone/SmartphonePreview';
 import { useDeleteSmartphonesMutation, useGetSmartphoneListQuery } from '7_shared/api/smartphoneApi';
 import CreateSmartphone from './forms/CreateSmartphone';
+import ConfirmModal from '5_features/confirmModal/ConfirmModal';
 
 const SmartphoneList = () => {
   const { data } = useGetSmartphoneListQuery(null);
@@ -56,12 +57,12 @@ const SmartphoneList = () => {
             setSelectedProducts={setSelectedProducts}
           />
         ))}
-      {/* <ConfirmModal
+      <ConfirmModal
         isShow={isShow}
         setIsShow={setIsShow}
         message={message}
         confirmHandler={removeProducts}
-      /> */}
+      />
       <Modal setIsShow={setIsShowForm} isShow={isShowForm}>
         <CreateSmartphone />
       </Modal>
