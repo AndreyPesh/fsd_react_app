@@ -3,12 +3,17 @@ import { useParams } from 'react-router-dom';
 import BrandList from './components/BrandList';
 import { useAppDispatch, useAppSelector } from '1_app/store/hooks';
 import Loader from '7_shared/loader/Loader';
-import { useGetSmartphoneQuery } from '7_shared/api/smartphoneApi';
+import {
+  useGetSmartphoneQuery,
+  useUpdateSmartphoneMutation,
+} from '7_shared/api/smartphoneApi';
 import {
   addDataSmartphone,
   initDataSmartphone,
 } from './store/smartphoneDataSlice';
 import UpdateImages from '5_features/updateImages/UpdateImages';
+import { addDataToDataForm } from './utils/helpers';
+import LoadButton from '7_shared/buttons/LoadButton';
 
 const UpdateDataSmartphone = () => {
   const { smartphoneId } = useParams();
@@ -18,6 +23,8 @@ const UpdateDataSmartphone = () => {
     id: smartphoneId!,
   });
   const [updatedImages, setUpdatedImages] = useState<Array<string>>([]);
+  const [updateSmartphone, { isLoading: updateLoading, isError: updateError }] =
+    useUpdateSmartphoneMutation();
 
   useEffect(() => {
     if (data) {
@@ -42,10 +49,15 @@ const UpdateDataSmartphone = () => {
     return <h2>Cant load data. Something went wrong!</h2>;
   }
 
-  const formSubmit = (event: FormEvent<HTMLFormElement>) => {
+  const formSubmit = async (event: FormEvent<HTMLFormElement>) => {
     event.preventDefault();
-    // console.log(dataSmartphone);
+    const data = { ...dataSmartphone, images: [] };
+    const form = addDataToDataForm(data);
+    if (smartphoneId) {
+      await updateSmartphone({ data: form, id: smartphoneId });
+    }
   };
+
   const formHandler = (event: ChangeEvent<HTMLInputElement>) => {
     const { name, value, type, checked } = event.target;
     dispatch(addDataSmartphone({ name, value, type, checked }));
@@ -147,9 +159,13 @@ const UpdateDataSmartphone = () => {
           updatedImages={updatedImages}
         />
         <div className="form__button-submit">
-          <button className="button button_confirm " type="submit">
+          <LoadButton
+            listClass={'button button_confirm'}
+            type="submit"
+            isLoad={updateLoading}
+          >
             Update
-          </button>
+          </LoadButton>
         </div>
       </form>
     </div>

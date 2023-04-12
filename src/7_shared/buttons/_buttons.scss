@@ -58,6 +58,11 @@
     padding: 10px;
     min-width: 120px;
     background-color: $color-swamp;
+    &:disabled {
+      pointer-events: none;
+      user-select: none;
+      background-color: rgba($color: $color-swamp, $alpha: 0.5);
+    }
   }
   &_submit {
     padding: 10px;
