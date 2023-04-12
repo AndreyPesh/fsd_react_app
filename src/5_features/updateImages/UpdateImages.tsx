@@ -1,17 +1,16 @@
-import axios from 'axios';
-import {
-  useEffect,
-  useRef,
-  MouseEvent,
-  ChangeEvent,
-} from 'react';
+import { useEffect, useRef, MouseEvent, ChangeEvent, useState } from 'react';
 import { UpdateImagesProps } from './types/interfaces';
-import { BASE_URL } from '1_app/constants';
 import { filterImages } from '5_features/loadImages/utils/helpers';
 import ImagePreview from '5_features/loadImages/ui/ImagePreview';
+import { loadImageByName } from './utils/helpers';
 
-const UpdateImages = ({ imagesList, updatedImages, setUpdatedImages }: UpdateImagesProps) => {
+const UpdateImages = ({
+  imagesList,
+  updatedImages,
+  setUpdatedImages,
+}: UpdateImagesProps) => {
   const refInput = useRef<HTMLInputElement>(null);
+  let ignoreRequest = false;
 
   const btnAddHandler = (event: MouseEvent<HTMLButtonElement>) => {
     event.preventDefault();
@@ -44,23 +43,11 @@ const UpdateImages = ({ imagesList, updatedImages, setUpdatedImages }: UpdateIma
   };
 
   useEffect(() => {
-    const loadImage = () => {
-      imagesList.map(async (imageData) => {
-        const { data } = await axios.get(BASE_URL + '/' + imageData.name, {
-          responseType: 'blob',
-        });
-        const reader = new FileReader();
-        reader.readAsDataURL(data);
-
-        reader.onload = () => {
-          const { result } = reader;
-          if (result && typeof result === 'string') {
-            setUpdatedImages((prevState) => [...prevState, result]);
-          }
-        };
-      });
+    if(!ignoreRequest)
+    loadImageByName(imagesList, setUpdatedImages);
+    return () => {
+      ignoreRequest = true;
     };
-    loadImage();
   }, []);
 
   return (
@@ -68,7 +55,11 @@ const UpdateImages = ({ imagesList, updatedImages, setUpdatedImages }: UpdateIma
       <div className="loader-image__preview">
         {updatedImages &&
           updatedImages.map((file, index) => (
-            <ImagePreview key={index} file={file} remove={() => removeImage(index)} />
+            <ImagePreview
+              key={index}
+              file={file}
+              remove={() => removeImage(index)}
+            />
           ))}
       </div>
       <div className="">
