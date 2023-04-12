@@ -25,12 +25,24 @@ export const smartphoneApi = createApi({
           credentials: 'include',
         };
       },
+      providesTags: ['Smartphone'],
     }),
     addSmartphone: builder.mutation<void, FormData>({
       query(data) {
         return {
           url: '/smartphones/create',
           method: 'POST',
+          body: data,
+          credentials: 'include',
+        };
+      },
+      invalidatesTags: ['Smartphone'],
+    }),
+    updateSmartphone: builder.mutation<void, {data: FormData, id: string}>({
+      query({ data, id}) {
+        return {
+          url: `/smartphones/update/${id}`,
+          method: 'PATCH',
           body: data,
           credentials: 'include',
         };
@@ -55,5 +67,6 @@ export const {
   useGetSmartphoneListQuery,
   useGetSmartphoneQuery,
   useAddSmartphoneMutation,
+  useUpdateSmartphoneMutation,
   useDeleteSmartphonesMutation,
 } = smartphoneApi;

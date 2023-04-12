@@ -1,40 +1,76 @@
+import { ChangeEvent, FormEvent, useEffect, useState } from 'react';
+import { useParams } from 'react-router-dom';
+import BrandList from './components/BrandList';
+import { useAppDispatch, useAppSelector } from '1_app/store/hooks';
+import Loader from '7_shared/loader/Loader';
+import {
+  useGetSmartphoneQuery,
+  useUpdateSmartphoneMutation,
+} from '7_shared/api/smartphoneApi';
+import {
+  addDataSmartphone,
+  initDataSmartphone,
+} from './store/smartphoneDataSlice';
+import UpdateImages from '5_features/updateImages/UpdateImages';
+import { addDataToDataForm } from './utils/helpers';
+import LoadButton from '7_shared/buttons/LoadButton';
 
 const UpdateDataSmartphone = () => {
-  // const { smartphoneId } = useParams();
-  // const dispatch = useAppDispatch();
-  // const dataSmartphone = useAppSelector((state) => state.smartphoneDataForm);
-  // const { data, isLoading, isSuccess } = useGetSmartphoneQuery({ id: smartphoneId! });
-  // const [updatedImages, setUpdatedImages] = useState<Array<string>>([]);
+  const { smartphoneId } = useParams();
+  const dispatch = useAppDispatch();
+  const dataSmartphone = useAppSelector((state) => state.smartphoneDataForm);
+  const { data, isLoading, isSuccess } = useGetSmartphoneQuery({
+    id: smartphoneId!,
+  });
+  const [updatedImages, setUpdatedImages] = useState<Array<string>>([]);
+  const [updateSmartphone, { isLoading: updateLoading, isError: updateError }] =
+    useUpdateSmartphoneMutation();
 
-  // useEffect(() => {
-  //   if(data) {
-  //     const { model, display, price, year, cpu, frequency, memory, nfc } = data;
-  //     dispatch(initDataSmartphone({ model, display, price, year, cpu, frequency, memory, nfc, brand: '' }));
-  //   }
-  // }, [isSuccess]);
+  useEffect(() => {
+    if (data) {
+      const { model, display, price, year, cpu, frequency, memory, nfc } = data;
+      dispatch(
+        initDataSmartphone({
+          model,
+          display,
+          price,
+          year,
+          cpu,
+          frequency,
+          memory,
+          nfc,
+          brand: '',
+        })
+      );
+    }
+  }, [isSuccess]);
 
-  // if (!data) {
-  //   return <h2>Cant load data. Something went wrong!</h2>;
-  // }
+  if (!data) {
+    return <h2>Cant load data. Something went wrong!</h2>;
+  }
 
+  const formSubmit = async (event: FormEvent<HTMLFormElement>) => {
+    event.preventDefault();
+    const data = { ...dataSmartphone, images: [] };
+    const form = addDataToDataForm(data);
+    if (smartphoneId) {
+      await updateSmartphone({ data: form, id: smartphoneId });
+    }
+  };
 
-  // const formSubmit = (event: FormEvent<HTMLFormElement>) => {
-  //   event.preventDefault();
-  //   // console.log(dataSmartphone);
-  // };
-  // const formHandler = (event: ChangeEvent<HTMLInputElement>) => {
-  //   const { name, value, type, checked } = event.target;
-  //   dispatch(addDataSmartphone({ name, value, type, checked }));
-  // };
+  const formHandler = (event: ChangeEvent<HTMLInputElement>) => {
+    const { name, value, type, checked } = event.target;
+    dispatch(addDataSmartphone({ name, value, type, checked }));
+  };
 
-  // if (isLoading) {
-  //   return <Loader />;
-  // }
+  if (isLoading) {
+    return <Loader />;
+  }
 
   return (
     <div className="container">
       <h2>Update smartphone</h2>
-      {/* <form onSubmit={formSubmit} className="form">
+      <form onSubmit={formSubmit} className="form">
         <div className="form__field">
           <label>Model:</label>
           <input
@@ -121,13 +157,17 @@ const UpdateDataSmartphone = () => {
           imagesList={data.images}
           setUpdatedImages={setUpdatedImages}
           updatedImages={updatedImages}
-        /> */}
+        />
         <div className="form__button-submit">
-          <button className="button button_confirm " type="submit">
+          <LoadButton
+            listClass={'button button_confirm'}
+            type="submit"
+            isLoad={updateLoading}
+          >
             Update
-          </button>
+          </LoadButton>
         </div>
-      {/* </form> */}
+      </form>
     </div>
   );
 };
