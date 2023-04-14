@@ -51,7 +51,7 @@ const UpdateDataSmartphone = () => {
 
   const formSubmit = async (event: FormEvent<HTMLFormElement>) => {
     event.preventDefault();
-    const data = { ...dataSmartphone, images: [] };
+    const data = { ...dataSmartphone, images: updatedImages };
     const form = addDataToDataForm(data);
     if (smartphoneId) {
       await updateSmartphone({ data: form, id: smartphoneId });
