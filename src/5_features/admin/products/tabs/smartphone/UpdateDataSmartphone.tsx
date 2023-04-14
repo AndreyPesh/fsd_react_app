@@ -28,7 +28,17 @@ const UpdateDataSmartphone = () => {
 
   useEffect(() => {
     if (data) {
-      const { model, display, price, year, cpu, frequency, memory, nfc } = data;
+      const {
+        model,
+        display,
+        price,
+        year,
+        cpu,
+        frequency,
+        memory,
+        nfc,
+        brand: { brand },
+      } = data;
       dispatch(
         initDataSmartphone({
           model,
@@ -39,7 +49,7 @@ const UpdateDataSmartphone = () => {
           frequency,
           memory,
           nfc,
-          brand: '',
+          brand,
         })
       );
     }
@@ -91,7 +101,7 @@ const UpdateDataSmartphone = () => {
             onChange={formHandler}
           />
         </div>
-        <BrandList />
+        <BrandList brand={dataSmartphone.brand} />
         <div className="form__field">
           <label>Price:</label>
           <input
