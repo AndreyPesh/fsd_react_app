@@ -1,3 +1,5 @@
+import { SHIFT_LAST_PAGE, SHIFT_START_PART, SHIFT_TRANSIT_PAGE, START_PAGE } from '../types/constants';
+
 interface ItemPaginationListProps {
   pages: React.ReactNode[];
   limit: number;
@@ -9,20 +11,28 @@ const ItemPaginationList = ({
   limit,
   currentPage,
 }: ItemPaginationListProps) => {
-  let partPages = [...pages].slice(0, limit);
-  if (currentPage > pages.length - limit) {
-    partPages = [...pages].slice(pages.length - limit);
+  let currentPiecePages = [...pages].slice(START_PAGE, limit);
+  const numberPages = pages.length;
+  const isShowLastPartPages = currentPage > numberPages - limit + SHIFT_LAST_PAGE;
+
+  if (isShowLastPartPages) {
+    const lastPartPageNumber = numberPages - limit;
+    currentPiecePages = [...pages].slice(lastPartPageNumber);
   } else if (currentPage > limit) {
-    if ((currentPage - 1) % limit === 0) {
-      partPages = [...pages].slice(currentPage - 1, currentPage + limit - 1);
+    const isChangePartPages = (currentPage - 1) % limit === 0;
+    if (isChangePartPages) {
+      const firstPageNumber = currentPage - SHIFT_TRANSIT_PAGE;
+      const lastPageNumber = currentPage + limit - SHIFT_TRANSIT_PAGE;
+      currentPiecePages = [...pages].slice(firstPageNumber, lastPageNumber);
     } else {
-      const part = Math.ceil(currentPage / limit);
-      partPages = [...pages].slice(part + limit - 1, part + limit + limit);
-      console.log(part);
+      const partNumber = Math.ceil(currentPage / limit);
+      const firstPageNumber = (partNumber - SHIFT_START_PART) * limit;
+      const lastPageNumber = partNumber * limit;
+      currentPiecePages = [...pages].slice(firstPageNumber, lastPageNumber);
     }
   }
 
-  return <>{partPages}</>;
+  return <>{currentPiecePages}</>;
 };
 
 export default ItemPaginationList;
