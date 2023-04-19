@@ -1,4 +1,9 @@
-import { SHIFT_LAST_PAGE, SHIFT_START_PART, SHIFT_TRANSIT_PAGE, START_PAGE } from '../types/constants';
+import {
+  SHIFT_LAST_PAGE,
+  SHIFT_START_PART,
+  SHIFT_TRANSIT_PAGE,
+  START_PAGE,
+} from '../types/constants';
 
 interface ItemPaginationListProps {
   pages: React.ReactNode[];
@@ -13,13 +18,15 @@ const ItemPaginationList = ({
 }: ItemPaginationListProps) => {
   let currentPiecePages = [...pages].slice(START_PAGE, limit);
   const numberPages = pages.length;
-  const isShowLastPartPages = currentPage > numberPages - limit + SHIFT_LAST_PAGE;
+  const lastPart = Math.ceil(numberPages / limit);
+  const isShowLastPartPages =
+    currentPage >= lastPart * limit - limit + SHIFT_LAST_PAGE;
 
   if (isShowLastPartPages) {
     const lastPartPageNumber = numberPages - limit;
     currentPiecePages = [...pages].slice(lastPartPageNumber);
   } else if (currentPage > limit) {
-    const isChangePartPages = (currentPage - 1) % limit === 0;
+    const isChangePartPages = (currentPage - SHIFT_TRANSIT_PAGE) % limit === 0;
     if (isChangePartPages) {
       const firstPageNumber = currentPage - SHIFT_TRANSIT_PAGE;
       const lastPageNumber = currentPage + limit - SHIFT_TRANSIT_PAGE;

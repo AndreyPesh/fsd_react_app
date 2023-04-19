@@ -8,7 +8,7 @@ import { FIRST_PAGE } from './types/constants';
 const Pagination = () => {
   const [currentPage, setCurrentPage] = useState<number>(1);
   const data = [1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12];
-  const limit = 3;
+  const limit = 4;
 
   const selectPageHandler = (event: MouseEvent<HTMLElement>) => {
     const { target } = event;

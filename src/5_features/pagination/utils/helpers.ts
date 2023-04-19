@@ -16,7 +16,6 @@ export const formListClasses = (
   if (isDisableButton) {
     listClasses.push(disableButtonClass);
   }
-  console.log(listClasses);
   
   return listClasses.join(' ');
 };
