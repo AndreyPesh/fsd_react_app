@@ -2,10 +2,13 @@ import { MouseEvent, useState } from 'react';
 import ItemPagination from './components/ItemPagination';
 import { TypeButtonPagination } from './types/enums';
 import PrevNextButton from './components/PrevNextButton';
+import ItemPaginationList from './components/ItemPaginationList';
+import { FIRST_PAGE } from './types/constants';
 
 const Pagination = () => {
   const [currentPage, setCurrentPage] = useState<number>(1);
-  const data = [1, 2, 3, 4, 5, 6, 7, 8, 9, 10];
+  const data = [1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12];
+  const limit = 4;
 
   const selectPageHandler = (event: MouseEvent<HTMLElement>) => {
     const { target } = event;
@@ -19,7 +22,7 @@ const Pagination = () => {
   };
 
   const listPages = [];
-  for (let page = 1; page < data.length; page++) {
+  for (let page = 1; page <= data.length; page++) {
     listPages.push(
       <ItemPagination
         pageNumber={page}
@@ -35,12 +38,18 @@ const Pagination = () => {
       <PrevNextButton
         type={TypeButtonPagination.PREV}
         togglePage={setCurrentPage}
+        isDisableButton={currentPage === FIRST_PAGE}
       />
-      {listPages}
+      <ItemPaginationList
+        pages={listPages}
+        limit={limit}
+        currentPage={currentPage}
+      />
       <PrevNextButton
         type={TypeButtonPagination.NEXT}
         togglePage={setCurrentPage}
-        maxPage={data.length - 1}
+        isDisableButton={currentPage === data.length}
+        maxPage={data.length}
       />
     </ul>
   );
