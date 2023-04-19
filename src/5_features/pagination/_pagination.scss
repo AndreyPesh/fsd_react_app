@@ -42,4 +42,9 @@
   &_next {
     rotate: -90deg;
   }
+  &_disable {
+    background-color: $color-dot;
+    pointer-events: none;
+    cursor: not-allowed;
+  }
 }

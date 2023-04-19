@@ -1,17 +1,22 @@
-import { Dispatch, SetStateAction } from 'react';
+import { Dispatch, SetStateAction, useEffect, useState } from 'react';
 import { TypeButtonPagination } from '../types/enums';
+import { formListClasses } from '../utils/helpers';
 
 interface PrevNextButtonProps {
   type: TypeButtonPagination;
   togglePage: Dispatch<SetStateAction<number>>;
+  isDisableButton?: boolean;
   maxPage?: number;
 }
 
 const PrevNextButton = ({
   type,
   maxPage,
+  isDisableButton,
   togglePage,
 }: PrevNextButtonProps) => {
+  const [listClasses, setListClasses] = useState<string>('');
+
   const togglePageHandler = () => {
     if (type === TypeButtonPagination.PREV) {
       togglePage((prevPage) => {
@@ -26,16 +31,12 @@ const PrevNextButton = ({
     }
   };
 
-  return (
-    <li
-      className={
-        type === TypeButtonPagination.PREV
-          ? 'pagination__button pagination__button_prev'
-          : 'pagination__button pagination__button_next'
-      }
-      onClick={togglePageHandler}
-    ></li>
-  );
+  useEffect(() => {
+    const listClasses = formListClasses(type, isDisableButton);
+    setListClasses(() => listClasses);
+  }, [isDisableButton]);
+
+  return <li className={listClasses} onClick={togglePageHandler}></li>;
 };
 
 export default PrevNextButton;

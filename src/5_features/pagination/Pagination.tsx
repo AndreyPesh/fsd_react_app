@@ -3,6 +3,7 @@ import ItemPagination from './components/ItemPagination';
 import { TypeButtonPagination } from './types/enums';
 import PrevNextButton from './components/PrevNextButton';
 import ItemPaginationList from './components/ItemPaginationList';
+import { FIRST_PAGE } from './types/constants';
 
 const Pagination = () => {
   const [currentPage, setCurrentPage] = useState<number>(1);
@@ -37,11 +38,17 @@ const Pagination = () => {
       <PrevNextButton
         type={TypeButtonPagination.PREV}
         togglePage={setCurrentPage}
+        isDisableButton={currentPage === FIRST_PAGE}
       />
-      <ItemPaginationList pages={listPages} limit={limit} currentPage={currentPage}/>
+      <ItemPaginationList
+        pages={listPages}
+        limit={limit}
+        currentPage={currentPage}
+      />
       <PrevNextButton
         type={TypeButtonPagination.NEXT}
         togglePage={setCurrentPage}
+        isDisableButton={currentPage === data.length}
         maxPage={data.length}
       />
     </ul>
