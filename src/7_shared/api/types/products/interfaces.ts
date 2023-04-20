@@ -26,3 +26,8 @@ export interface BrandData {
   id: string;
   brand: string;
 }
+
+export interface ResponseSmartphoneData {
+  numberRecords: number;
+  smartphoneList: SmartphoneData[];
+}
