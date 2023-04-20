@@ -10,6 +10,7 @@ import Burger from '5_features/burger/Burger';
 import { NAME_CLASS_ACTIVE_BURGER } from '5_features/burger/constants';
 import { addRemoveClassToBody } from '5_features/burger/helpers';
 import AuthButtons from '7_shared/buttons/auth/AuthButtons';
+import CartButton from '5_features/cart/CartButton';
 
 const Header = (): JSX.Element => {
   const isAuth = useAuth();
@@ -32,6 +33,7 @@ const Header = (): JSX.Element => {
         <Navigation />
         <SwitchLang />
         <Search />
+        <CartButton />
         {isAuth ? <UserManagement /> : <AuthButtons />}
       </div>
       <Burger handler={burgerHandler} activeClass={activeClass} />

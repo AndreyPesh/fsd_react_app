@@ -6,6 +6,7 @@ export const enum Links {
   refrigerators = '/refrigerators',
   furniture = '/furniture',
   user = '/user',
+  cart = '/cart',
   admin = '/admin',
 }
 
