@@ -7,12 +7,12 @@ import { LIMIT_ITEMS, LIMIT_PAGES } from './types/constants';
 
 const SmartphoneList = () => {
   const [currentPage, setCurrentPage] = useState<number>(1);
-  const { data, isLoading } = useGetSmartphoneListQuery({
+  const { data, isLoading, isFetching } = useGetSmartphoneListQuery({
     page: currentPage,
     limit: LIMIT_ITEMS,
   });
 
-  if (isLoading) {
+  if (isLoading || isFetching) {
     return <Loader />;
   }
 
