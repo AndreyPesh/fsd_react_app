@@ -1,16 +1,16 @@
 import { createApi } from '@reduxjs/toolkit/query/react';
 import customFetchBase from './utils/customFetchBase';
-import { SmartphoneData } from './types/products/interfaces';
+import { ResponseSmartphoneData, SmartphoneData } from './types/products/interfaces';
 
 export const smartphoneApi = createApi({
   reducerPath: 'smartphoneApi',
   baseQuery: customFetchBase,
   tagTypes: ['Smartphone'],
   endpoints: (builder) => ({
-    getSmartphoneList: builder.query<SmartphoneData[], null>({
-      query() {
+    getSmartphoneList: builder.query<ResponseSmartphoneData, {page: number, limit: number}>({
+      query({page, limit}) {
         return {
-          url: '/smartphones/get',
+          url: `/smartphones/get?page=${page}&limit=${limit}`,
           method: 'GET',
           credentials: 'include',
         };

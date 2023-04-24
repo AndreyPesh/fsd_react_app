@@ -7,7 +7,7 @@ import CreateSmartphone from './forms/CreateSmartphone';
 import ConfirmModal from '5_features/confirmModal/ConfirmModal';
 
 const SmartphoneList = () => {
-  const { data } = useGetSmartphoneListQuery(null);
+  const { data } = useGetSmartphoneListQuery({page: 1, limit: 5});
   const [selectedProducts, setSelectedProducts] = useState<Array<string>>([]);
   const [deleteSmartphones, { isLoading, isSuccess }] =
     useDeleteSmartphonesMutation();
@@ -50,7 +50,7 @@ const SmartphoneList = () => {
         </button>
       </div>
       {data &&
-        data.map((smartphone) => (
+        data.smartphoneList.map((smartphone) => (
           <SmartphonePreview
             key={smartphone.id}
             data={smartphone}

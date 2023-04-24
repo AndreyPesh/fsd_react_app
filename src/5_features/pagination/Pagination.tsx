@@ -1,14 +1,26 @@
-import { MouseEvent, useState } from 'react';
+import { Dispatch, MouseEvent, SetStateAction } from 'react';
 import ItemPagination from './components/ItemPagination';
 import { TypeButtonPagination } from './types/enums';
 import PrevNextButton from './components/PrevNextButton';
 import ItemPaginationList from './components/ItemPaginationList';
 import { FIRST_PAGE } from './types/constants';
 
-const Pagination = () => {
-  const [currentPage, setCurrentPage] = useState<number>(1);
-  const data = [1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12];
-  const limit = 4;
+interface PaginationProps {
+  currentPage: number;
+  limitItems: number;
+  numberRecords: number;
+  limitPages: number;
+  setCurrentPage: Dispatch<SetStateAction<number>>;
+}
+
+const Pagination = ({
+  currentPage,
+  limitItems,
+  limitPages,
+  numberRecords,
+  setCurrentPage,
+}: PaginationProps) => {
+  const numberPages = Math.ceil(numberRecords / limitItems);
 
   const selectPageHandler = (event: MouseEvent<HTMLElement>) => {
     const { target } = event;
@@ -22,7 +34,7 @@ const Pagination = () => {
   };
 
   const listPages = [];
-  for (let page = 1; page <= data.length; page++) {
+  for (let page = FIRST_PAGE; page <= numberPages; page++) {
     listPages.push(
       <ItemPagination
         pageNumber={page}
@@ -42,14 +54,14 @@ const Pagination = () => {
       />
       <ItemPaginationList
         pages={listPages}
-        limit={limit}
+        limit={limitPages}
         currentPage={currentPage}
       />
       <PrevNextButton
         type={TypeButtonPagination.NEXT}
         togglePage={setCurrentPage}
-        isDisableButton={currentPage === data.length}
-        maxPage={data.length}
+        isDisableButton={currentPage === numberPages}
+        maxPage={numberPages}
       />
     </ul>
   );

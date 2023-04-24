@@ -7,6 +7,7 @@ import { userApi } from '7_shared/api/userApi';
 import { smartphoneApi } from '7_shared/api/smartphoneApi';
 import { smartphoneBrandApi } from '7_shared/api/smartphoneBrandApi';
 import smartphoneDataSlice from '5_features/admin/products/tabs/smartphone/store/smartphoneDataSlice';
+import { cartApi } from '7_shared/api/cartApi';
 // import modalReducer from './slice/modalSlice';
 
 export const store = configureStore({
@@ -20,6 +21,7 @@ export const store = configureStore({
     // [productsApi.reducerPath]: productsApi.reducer,
     [smartphoneApi.reducerPath]: smartphoneApi.reducer,
     [smartphoneBrandApi.reducerPath]: smartphoneBrandApi.reducer,
+    [cartApi.reducerPath]: cartApi.reducer,
   },
   middleware: (getDefaultMiddleware) =>
     getDefaultMiddleware({}).concat([
@@ -28,6 +30,7 @@ export const store = configureStore({
       // productsApi.middleware,
       smartphoneApi.middleware,
       smartphoneBrandApi.middleware,
+      cartApi.middleware
     ]),
 });
 

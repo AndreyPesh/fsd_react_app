@@ -12,6 +12,7 @@ import { createRoutePage } from '7_shared/utils/helpers';
 import { ID_SMARTPHONE_PARAM } from '1_app/constants';
 import Smartphone from '3_pages/products/Smartphone';
 import UpdateSmartphone from '3_pages/admin/products/UpdateSmartphone';
+import Cart from '3_pages/Cart';
 // import { loadData } from '../utils/loader';
 
 export const listRoutes = [
@@ -34,19 +35,25 @@ export const listRoutes = [
     // loader: loadData,
   },
   {
-    mainNav: true,
-    path: Links.refrigerators,
-    name: 'Refrigerators',
-    element: <Refrigerators />,
+    mainNav: false,
+    path: Links.cart,
+    element: <Cart />,
     // loader: loadData,
   },
-  {
-    mainNav: true,
-    path: Links.furniture,
-    name: 'Furniture',
-    element: <Furniture />,
-    // loader: loadData,
-  },
+  // {
+  //   mainNav: true,
+  //   path: Links.refrigerators,
+  //   name: 'Refrigerators',
+  //   element: <Refrigerators />,
+  //   // loader: loadData,
+  // },
+  // {
+  //   mainNav: true,
+  //   path: Links.furniture,
+  //   name: 'Furniture',
+  //   element: <Furniture />,
+  //   // loader: loadData,
+  // },
   {
     mainNav: false,
     path: AuthPath.login,
